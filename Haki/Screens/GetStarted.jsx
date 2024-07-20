@@ -1,5 +1,6 @@
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import Buttons from '../Components/Buttons'; 
 
 const GetStarted = ({ navigate }) => {
   const handleSignUp = () => {
@@ -13,24 +14,20 @@ const GetStarted = ({ navigate }) => {
   return (
     <View style={styles.container}>
       <ImageBackground 
-        source={{ uri: 'https://img.freepik.com/free-photo/abstract-multi-colored-wave-pattern-shiny-flowing-modern-generated-by-ai_188544-15588.jpg' }} 
+        source={{ uri: 'https://c4.wallpaperflare.com/wallpaper/665/68/940/anime-room-interior-dark-wallpaper-preview.jpg' }} 
         resizeMode="cover" 
         style={styles.backgroundImage}
       >
         <View style={styles.overlay}>
           <Text style={styles.title}>Welcome</Text>
           <Text style={styles.subtitle}>Get started by creating an account or logging in.</Text>
-          <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-            <Text style={styles.buttonText}>Sign Up</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Log In</Text>
-          </TouchableOpacity>
+          <Buttons onPress={handleSignUp}>Sign Up</Buttons>
+          <Buttons onPress={handleLogin}>Log In</Buttons>
         </View>
       </ImageBackground>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -42,6 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     justifyContent: 'center',
+    height: '100%',
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -63,19 +61,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 40,
   },
-  button: {
-    backgroundColor: '#841584',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
-    width: '80%',
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  }
 });
 
 export default GetStarted;

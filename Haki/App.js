@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import GetStarted from './Components/GetStarted';
-import SignUp from './Components/SignUp';
-import Login from './Components/Login';
+import GetStarted from './Screens/GetStarted';
+import SignUp from './Screens/SignUp';
+import Login from './Screens/Login';
+import Home from './Screens/Home';
 
-const App = () => {
+function App() {
   const [currentScreen, setCurrentScreen] = useState('GetStarted');
 
   const navigate = (screen) => {
@@ -14,17 +15,24 @@ const App = () => {
   let ScreenComponent;
   switch (currentScreen) {
     case 'SignUp':
-      ScreenComponent = <SignUp navigate={navigate} />;
+      ScreenComponent = SignUp;
       break;
     case 'Login':
-      ScreenComponent = <Login navigate={navigate} />;
+      ScreenComponent = Login;
+      break;
+    case 'Home':
+      ScreenComponent = Home;
       break;
     default:
-      ScreenComponent = <GetStarted navigate={navigate} />;
+      ScreenComponent = GetStarted;
   }
 
-  return <View style={styles.container}>{ScreenComponent}</View>;
-};
+  return (
+    <View style={styles.container}>
+      <ScreenComponent navigate={navigate} />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {

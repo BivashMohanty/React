@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { ImageBackground, StyleSheet, Text, View, TextInput } from 'react-native';
+import Buttons from '../Components/Buttons'; 
 
 const SignUp = ({ navigate }) => {
   const [email, setEmail] = useState('');
@@ -9,12 +10,13 @@ const SignUp = ({ navigate }) => {
     console.log("Sign Up Button Clicked");
     console.log("Email:", email);
     console.log("Password:", password);
+    navigate('Home');
   };
 
   return (
     <View style={styles.container}>
       <ImageBackground 
-        source={{ uri: 'https://wallpapers.com/images/featured/colorful-abstract-background-rra8u4adw1ubypzl.jpg' }} 
+        source={{ uri: 'https://img.freepik.com/premium-photo/horror-anime-manga-art-background-illustration-design_877869-51380.jpg' }} 
         resizeMode="cover" 
         style={styles.backgroundImage}
       >
@@ -36,17 +38,12 @@ const SignUp = ({ navigate }) => {
             secureTextEntry={true}
             autoCapitalize="none"
           />
-          <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-            <Text style={styles.buttonText}>Sign Up</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => navigate('GetStarted')}>
-            <Text style={styles.buttonText}>Back to Get Started</Text>
-          </TouchableOpacity>
+          <Buttons onPress={handleSignUp}>Sign Up</Buttons>
         </View>
       </ImageBackground>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -56,6 +53,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
+    height: '100%',
     width: '100%',
     justifyContent: 'center',
   },
@@ -80,17 +78,6 @@ const styles = StyleSheet.create({
     borderColor: '#D3D3D3',
     marginBottom: 15,
   },
-  button: {
-    backgroundColor: '#841584',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  }
 });
 
 export default SignUp;
